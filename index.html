@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BOGO Offer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #f5628d;
+    }
+
+    .option {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .option.most-popular {
+      background: #fff7f8;
+    }
+
+    .most-popular::before {
+      content: "MOST POPULAR";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #f5628d;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .option.active {
+      border: 2px solid #f5628d;
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(245, 98, 141, 0.3);
+    }
+
+    .discount {
+      background: #f5628d;
+      color: white;
+      padding: 2px 6px;
+      font-size: 12px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .price {
+      float: right;
+      font-size: 16px;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #aaa;
+      font-size: 12px;
+      margin-left: 6px;
+    }
+
+    .selects {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+
+    select {
+      width: 48%;
+      padding: 6px;
+    }
+
+    .free-delivery {
+      color: #f5628d;
+      font-size: 14px;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #f5628d;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>YAY! It's BOGO</h2>
+
+  <div class="option active" onclick="selectOption(this)">
+    <label>
+      <input type="radio" name="unit" checked>
+      <strong>1 Unit</strong>
+      <span class="discount">10% Off</span>
+      <span class="price">$10.00 USD <span class="old-price">$24.00</span></span>
+    </label>
+  </div>
+
+  <div class="option most-popular" onclick="selectOption(this)">
+    <label>
+      <input type="radio" name="unit">
+      <strong>2 Unit</strong>
+      <span class="discount">20% Off</span>
+      <span class="price">$18.00 USD <span class="old-price">$48.00</span></span>
+    </label>
+    <div class="selects">
+      <select><option>S</option></select>
+      <select><option>Black</option></select>
+    </div>
+    <div class="selects">
+      <select><option>S</option></select>
+      <select><option>Colour</option></select>
+    </div>
+  </div>
+
+  <div class="option" onclick="selectOption(this)">
+    <label>
+      <input type="radio" name="unit">
+      <strong>3 Unit</strong>
+      <span class="discount">30% Off</span>
+      <span class="price">$24.00 USD <span class="old-price">$72.00</span></span>
+    </label>
+  </div>
+
+  <div class="free-delivery">Free Delivery</div>
+  <div class="total">Total : $18.00 USD</div>
+
+  <button class="btn">+ Add to Cart</button>
+</div>
+
+<script>
+  function selectOption(selected) {
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => {
+      option.classList.remove('active');
+      option.querySelector('input[type="radio"]').checked = false;
+    });
+    selected.classList.add('active');
+    selected.querySelector('input[type="radio"]').checked = true;
+  }
+</script>
+
+</body>
+</html>
